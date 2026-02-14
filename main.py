@@ -1,8 +1,10 @@
+import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-app = FastAPI(title="Nifty Bot Backend")
+app = FastAPI(title="Nifty Backend")
 
+# CORS so your frontend can call backend
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -13,8 +15,8 @@ app.add_middleware(
 
 @app.get("/")
 def root():
-    return {"status": "ok", "message": "Backend is running"}
+    return {"message": "Backend is running ✅"}
 
 @app.get("/health")
 def health():
-    return {"ok": True}
+    return {"status": "ok"}
